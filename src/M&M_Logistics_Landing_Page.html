@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&M Logistics - Modern E-commerce Delivery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#a855f7',
+                            foreground: '#ffffff',
+                        },
+                        background: '#fafafa',
+                        foreground: '#171717',
+                        muted: {
+                            DEFAULT: '#f5f5f5',
+                            foreground: '#737373',
+                        },
+                        card: {
+                            DEFAULT: '#ffffff',
+                            foreground: '#171717',
+                        },
+                        border: '#e5e5e5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .glass { backdrop-filter: blur(12px); background-color: rgba(250, 250, 250, 0.8); }
+        .hero-gradient { background: radial-gradient(circle at 70% 30%, rgba(168, 85, 247, 0.05) 0%, transparent 50%); }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-spin-slow { animation: spin 20s linear infinite; }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center gap-2 group cursor-pointer">
+                <div class="relative w-12 h-12 flex items-center justify-center">
+                    <div class="absolute inset-0 border-2 border-dashed border-primary rounded-xl opacity-50 animate-spin-slow"></div>
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-black text-xl shadow-lg">M</div>
+                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-foreground text-background rounded-md flex items-center justify-center font-bold text-xs border-2 border-background">M</div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter leading-none group-hover:text-primary transition-colors">M&M</span>
+                    <span class="text-[10px] uppercase tracking-[0.3em] font-bold opacity-50 leading-none">Logistics</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="text-sm font-medium hover:text-primary transition-colors">Services</a>
+                <a href="#tracking" class="text-sm font-medium hover:text-primary transition-colors">Tracking</a>
+                <a href="#why-us" class="text-sm font-medium hover:text-primary transition-colors">Why Us</a>
+                <a href="#calculator" class="text-sm font-medium hover:text-primary transition-colors">Calculator</a>
+                <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a>
+                <button class="bg-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-opacity">Get a Quote</button>
+            </div>
+            <button class="md:hidden p-2"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative pt-32 pb-20 overflow-hidden hero-gradient">
+        <div class="absolute top-0 right-0 -z-10 w-1/2 h-full bg-primary/5 rounded-bl-[100px]"></div>
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="inline-block bg-primary/10 text-primary text-xs font-bold px-4 py-1 rounded-full mb-4">E-commerce Logistics Specialist</span>
+                    <h1 class="text-5xl md:text-6xl font-black tracking-tighter mb-6 leading-[1.1]">
+                        Fast, Reliable Delivery for Your <span class="text-primary">E-commerce</span> Business
+                    </h1>
+                    <p class="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
+                        M&M Logistics provides end-to-end shipping solutions tailored for online retailers. From warehouse to doorstep, we ensure your customers get their orders on time.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <button class="bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                            Start Shipping <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                        <button class="border border-foreground/20 px-8 py-4 rounded-full font-bold hover:bg-foreground/5 transition-colors">
+                            View Pricing
+                        </button>
+                    </div>
+                    
+                    <!-- Tracking -->
+                    <div id="tracking" class="bg-card border rounded-2xl p-6 shadow-xl max-w-md">
+                        <h3 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="search" class="w-4 h-4 text-primary"></i> Track Your Shipment</h3>
+                        <div class="flex gap-2">
+                            <input type="text" placeholder="MM-123456" class="flex-1 bg-muted border rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
+                            <button class="bg-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-bold">Track</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+                        <img src="https://picsum.photos/seed/logistics/800/600" alt="Logistics" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border flex items-center gap-3 animate-float">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600"><i data-lucide="check-circle-2"></i></div>
+                        <div>
+                            <p class="text-[10px] text-muted-foreground uppercase font-bold">Success Rate</p>
+                            <p class="font-black">99.9%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-24 bg-muted/30">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-4xl font-black tracking-tighter mb-4">Our Logistics Solutions</h2>
+                <p class="text-muted-foreground">Tailored services for the modern e-commerce landscape.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-card p-8 rounded-2xl border hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="truck" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3">Last-Mile Delivery</h3>
+                    <p class="text-sm text-muted-foreground leading-relaxed">Direct to doorstep delivery with real-time tracking and friendly service.</p>
+                </div>
+                <div class="bg-card p-8 rounded-2xl border hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="package" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3">Fulfillment</h3>
+                    <p class="text-sm text-muted-foreground leading-relaxed">Professional packing and secure storage for your entire inventory.</p>
+                </div>
+                <div class="bg-card p-8 rounded-2xl border hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3">Global Shipping</h3>
+                    <p class="text-sm text-muted-foreground leading-relaxed">Cross-border logistics and customs handling for international reach.</p>
+                </div>
+                <div class="bg-card p-8 rounded-2xl border hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-3">Cargo Insurance</h3>
+                    <p class="text-sm text-muted-foreground leading-relaxed">Comprehensive coverage for peace of mind on every shipment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section id="calculator" class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-black tracking-tighter mb-6">Estimate Your Cost</h2>
+                    <p class="text-muted-foreground mb-8 leading-relaxed">Transparency is key. Use our interactive calculator to get an instant estimate for your delivery. No hidden fees, just straightforward pricing.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary"><i data-lucide="check" class="w-4 h-4"></i></div>
+                            <span class="font-bold">Real-time Quotes</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-primary"><i data-lucide="check" class="w-4 h-4"></i></div>
+                            <span class="font-bold">Volume Discounts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-card border-2 border-primary/10 rounded-3xl p-8 shadow-2xl">
+                    <div class="space-y-8">
+                        <div class="space-y-4">
+                            <div class="flex justify-between font-bold">
+                                <span>Weight (kg)</span>
+                                <span id="weight-val" class="text-primary">1kg</span>
+                            </div>
+                            <input type="range" id="weight" min="1" max="50" value="1" class="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary">
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between font-bold">
+                                <span>Distance (km)</span>
+                                <span id="dist-val" class="text-primary">10km</span>
+                            </div>
+                            <input type="range" id="dist" min="1" max="500" value="10" class="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary">
+                        </div>
+                        <div class="bg-primary/5 p-6 rounded-2xl flex justify-between items-center">
+                            <span class="font-bold">Estimated Total:</span>
+                            <span id="total-cost" class="text-4xl font-black text-primary">$11.50</span>
+                        </div>
+                        <button class="w-full bg-primary text-primary-foreground py-4 rounded-full font-black text-lg shadow-lg hover:opacity-90 transition-opacity">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t pt-20 pb-10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col items-center gap-6 mb-12">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-black text-xl">M</div>
+                    <span class="text-xl font-black tracking-tighter">M&M Logistics</span>
+                </div>
+                <p class="text-muted-foreground max-w-md">Empowering e-commerce businesses with world-class logistics solutions.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i data-lucide="globe" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+            <div class="border-t pt-8 text-xs text-muted-foreground">
+                <p>© 2026 M&M Logistics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('glass', 'border-b', 'py-2');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('glass', 'border-b', 'py-2');
+                nav.classList.add('py-4');
+            }
+        });
+
+        // Calculator Logic
+        const weightInput = document.getElementById('weight');
+        const distInput = document.getElementById('dist');
+        const weightVal = document.getElementById('weight-val');
+        const distVal = document.getElementById('dist-val');
+        const totalCost = document.getElementById('total-cost');
+
+        function updateCost() {
+            const w = parseInt(weightInput.value);
+            const d = parseInt(distInput.value);
+            weightVal.innerText = w + 'kg';
+            distVal.innerText = d + 'km';
+            
+            const cost = 5 + (w * 1.5) + (d * 0.2);
+            totalCost.innerText = '$' + cost.toFixed(2);
+        }
+
+        weightInput.addEventListener('input', updateCost);
+        distInput.addEventListener('input', updateCost);
+    </script>
+</body>
+</html>
